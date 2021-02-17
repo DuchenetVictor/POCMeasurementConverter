@@ -28,13 +28,13 @@
 
         <StackPanel  Orientation="Vertical" Background="Transparent" Grid.Column="0">
             <TextBlock Foreground="{x:Static fw:AccentColors.ImmersiveSystemAccentDark1Brush}" FontStretch="UltraExpanded" FontFamily="bold" FontWeight="Bold" Margin="5" TextDecorations="Underline" Text="Metric"  FontSize="16"/>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Content="Volume" Margin="0,3" Command="{Binding SelectedMeasurmentCommand}" CommandParameter="MetricVolume"/>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Content="Weight" Margin="0,3" Command="{Binding SelectedMeasurmentCommand}" CommandParameter="MetricWeight"/>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="False" Content="Distance" Margin="0,3" Command="{Binding SelectedMeasurmentCommand}" CommandParameter="MetricDistance" />
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Content="Volume" Margin="0,3" Command="{Binding SelectedMeasurementCommand}" CommandParameter="MetricVolume"/>
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Content="Weight" Margin="0,3" Command="{Binding SelectedMeasurementCommand}" CommandParameter="MetricWeight"/>
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="False" Content="Distance" Margin="0,3" Command="{Binding SelectedMeasurementCommand}" CommandParameter="MetricDistance" />
             <TextBlock Foreground="{x:Static fw:AccentColors.ImmersiveSystemAccentDark1Brush}" FontStretch="UltraExpanded" FontFamily="bold" FontWeight="Bold" Margin="5" TextDecorations="Underline" Text="Imperial" FontSize="16"/>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="False" Content ="Volume" Margin="0,3" Command="{Binding SelectedMeasurmentCommand}" CommandParameter="ImperialVolume" />
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="False" Content="Weight " Margin="0,3" Command="{Binding SelectedMeasurmentCommand}" CommandParameter="ImperialWeight"/>
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Content ="Distance" Margin="0,3" Command="{Binding SelectedMeasurmentCommand}" CommandParameter="ImperialDistance" />
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="False" Content ="Volume" Margin="0,3" Command="{Binding SelectedMeasurementCommand}" CommandParameter="ImperialVolume" />
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="False" Content="Weight " Margin="0,3" Command="{Binding SelectedMeasurementCommand}" CommandParameter="ImperialWeight"/>
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Content ="Distance" Margin="0,3" Command="{Binding SelectedMeasurementCommand}" CommandParameter="ImperialDistance" />
             
         </StackPanel>
         <StackPanel VerticalAlignment="Center" Grid.Column="2">

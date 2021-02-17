@@ -10,14 +10,13 @@ namespace POCMeasurementConverter.ViewModel
 {
     public partial class MainViewModel : BaseViewModel
     {
-        private const string _iconLeftToRight = "\uE893;";
-        private const string _iconRightToLeft = "\uE892;";
-        private const string _iconError = "\uE894";
-
-
         //Default Converter
         private IConverter _converter = new MetricVolume();
 
+
+        /// <summary>
+        /// list of unit get from Converter.GetUnits()
+        /// </summary>
         private List<Unit> _units;
         public List<Unit> Units
         {
@@ -31,8 +30,6 @@ namespace POCMeasurementConverter.ViewModel
 
             }
         }
-
-        public ICommand SelectedMeasurmentCommand { get; set; }
 
         private Unit _unitSelectedLeft;
         public Unit UnitSelectedLeft
@@ -70,13 +67,6 @@ namespace POCMeasurementConverter.ViewModel
 
         private DirectionEnum LastTexBoxFocus { get; set; }
 
-        private string _icon = _iconLeftToRight;
-        public string Icon
-        {
-            get { return _icon; }
-            set { _icon = value; OnPropertyChanged(); }
-        }
-
         private string _valueLeft;
         public string ValueLeft
         {
@@ -104,59 +94,44 @@ namespace POCMeasurementConverter.ViewModel
             }
         }
 
+        public ICommand SelectedMeasurementCommand { get; set; }
+
         public MainViewModel()
         {
             ResetData();
-            SelectedMeasurmentCommand = new SimpleCommand<string>((e) => InitConverter(e));
-        }
-
-        private void TurnIcon(DirectionEnum direction)
-        {
-            if (direction == DirectionEnum.ERROR)
-            {
-                Icon = _iconError;
-                return;
-            }
-
-            if (direction == DirectionEnum.TOTHELEFT)
-                Icon = _iconRightToLeft;
-            else
-                Icon = _iconLeftToRight;
+            SelectedMeasurementCommand = new SimpleCommand<string>((e) => InitConverter(e));
         }
 
         private void CalculationLeftToRigh()
         {
-            TurnIcon(DirectionEnum.TOTHERIGH);
-
             if (decimal.TryParse(_valueLeft, out decimal valueFromInDecimal))
             {
                 UnitSelectedLeft.Value = valueFromInDecimal;
                 _valueRight = _converter.Convert(UnitSelectedLeft, UnitSelectedRight).ToString();
             }
             else
-            {
-                TurnIcon(DirectionEnum.ERROR);
                 _valueRight = "0";
-            }
+
             OnPropertyChanged("ValueRight");
         }
 
         private void CalculationRightToLeft()
         {
-            TurnIcon(DirectionEnum.TOTHELEFT);
             if (decimal.TryParse(_valueRight, out decimal valueToInDecimal))
             {
                 UnitSelectedRight.Value = valueToInDecimal;
                 _valueLeft = _converter.Convert(UnitSelectedRight, UnitSelectedLeft).ToString();
             }
             else
-            {
                 _valueLeft = "0";
-                TurnIcon(DirectionEnum.ERROR);
-            }
+
             OnPropertyChanged("ValueLeft");
         }
 
+        /// <summary>
+        /// set your data to there default value 
+        /// call every timethe converter change
+        /// </summary>
         private void ResetData()
         {
             Units = _converter.GetUnits();
@@ -166,9 +141,13 @@ namespace POCMeasurementConverter.ViewModel
             ValueRight = "0";
         }
 
+
+        /// <summary>
+        /// Use to link the button with the correct parameter to the right Converter
+        /// </summary>
+        /// <param name="converterParameter"></param>
        private void InitConverter(string converterParameter)
         {
-            ResetData();
             if (System.Enum.TryParse(converterParameter, out ConverterParameterEnum converterParameterEnum))
             {
                 switch (converterParameterEnum)
@@ -184,6 +163,7 @@ namespace POCMeasurementConverter.ViewModel
                         break;
                 }
                 ResetData();
+
             }
         }
     }

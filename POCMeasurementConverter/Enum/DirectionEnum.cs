@@ -2,7 +2,6 @@
 {
     public enum DirectionEnum
     {
-        TOTHELEFT, TOTHERIGH,
-        ERROR
+        TOTHELEFT, TOTHERIGH
     }
 }

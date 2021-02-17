@@ -2,6 +2,6 @@
 {
     public enum ConverterParameterEnum
     {
-        MetricVolume, MetricWeight, MetricDistance, ImperialVolume, ImperialWeight,ImperialDistance
+        MetricVolume, MetricWeight, MetricDistance, ImperialVolume, ImperialWeight, ImperialDistance
     }
 }
